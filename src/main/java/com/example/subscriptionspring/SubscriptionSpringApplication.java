@@ -8,6 +8,9 @@ public class SubscriptionSpringApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(SubscriptionSpringApplication.class, args);
-    }
 
+        SubscribeOrion subscriptionOrion = new SubscribeOrion();
+        subscriptionOrion.listEntitieSubscribeOrion();
+
+    }
 }
