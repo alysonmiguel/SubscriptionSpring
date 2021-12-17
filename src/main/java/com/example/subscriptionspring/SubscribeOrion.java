@@ -50,6 +50,7 @@ public class SubscribeOrion {
                     .body("{\n  \"description\": \"Subscription store:001\",\n  \"subject\": {\n    \"entities\": [\n      {\n        \"id\": \"" + entitie.getId() + "\",\n        \"type\": \"" + entitie.getType() + "\"\n      }\n    ]\n  },\n  \"notification\": {\n    \"http\": {\n      \"url\": \"http://10.51.104.198:8084/subscribe\"\n    }\n  },\n  \"expires\": \"2026-04-05T14:00:00.00Z\",\n  \"throttling\": 5\n}")
                     .asString();
 
+//            System.out.println("Entities : " + entitie.toString());
         }
 
     }
