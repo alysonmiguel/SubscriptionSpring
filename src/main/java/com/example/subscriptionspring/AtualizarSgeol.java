@@ -1,18 +1,15 @@
 package com.example.subscriptionspring;
 
-import kong.unirest.HttpResponse;
 import kong.unirest.Unirest;
 import kong.unirest.json.JSONArray;
 import kong.unirest.json.JSONObject;
 
-import java.text.SimpleDateFormat;
 import java.time.Instant;
-import java.time.OffsetDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.TemporalAccessor;
 import java.util.Date;
 
-public class AtualizaSgeol {
+public class AtualizarSgeol {
 
     public void atualizarDados(String dados){
         AutenticacaoSgeol autenticacao = new AutenticacaoSgeol();
@@ -40,7 +37,6 @@ public class AtualizaSgeol {
                 System.out.println("bell_001");
                 System.out.println(jsonObject);
                 String dataCompleta = jsonObject.getJSONObject("TimeInstant").getString("value");
-
                 TemporalAccessor ta = DateTimeFormatter.ISO_INSTANT.parse(dataCompleta);
                 Instant i = Instant.from(ta);
                 Date d = Date.from(i);

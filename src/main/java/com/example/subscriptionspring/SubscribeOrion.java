@@ -40,11 +40,11 @@ public class SubscribeOrion {
 
             String json = response.getBody().getArray().get(i).toString();
             EntitieModel entitie = gson.fromJson(json, EntitieModel.class);
-            HttpResponse<String> sub = Unirest.post("http://localhost:1026/v2/subscriptions/")
+            Unirest.post("http://localhost:1026/v2/subscriptions/")
                     .header("fiware-service", "openiot")
                     .header("fiware-servicepath", "/")
                     .header("Content-Type", "application/json")
-                    .body("{\n  \"description\": \"Subscription store:001\",\n  \"subject\": {\n    \"entities\": [\n      {\n        \"id\": \"" + entitie.getId() + "\",\n        \"type\": \"" + entitie.getType() + "\"\n      }\n    ]\n  },\n  \"notification\": {\n    \"http\": {\n      \"url\": \"http://192.168.1.72:8084/subscribe\"\n    }\n  },\n  \"expires\": \"2026-04-05T14:00:00.00Z\",\n  \"throttling\": 5\n}")
+                    .body("{\n  \"description\": \"Subscription store:001\",\n  \"subject\": {\n    \"entities\": [\n      {\n        \"id\": \"" + entitie.getId() + "\",\n        \"type\": \"" + entitie.getType() + "\"\n      }\n    ]\n  },\n  \"notification\": {\n    \"http\": {\n      \"url\": \"http://10.51.104.198:8084/subscribe\"\n    }\n  },\n  \"expires\": \"2026-04-05T14:00:00.00Z\",\n  \"throttling\": 2\n}")
                     .asString();
 
             System.out.println("Entities : " + entitie.toString());
