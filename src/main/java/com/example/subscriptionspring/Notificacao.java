@@ -42,17 +42,11 @@ public class Notificacao {
     public void atualizarView(String type, String id){
         switch (type){
             case "door_001":
-                simpMessagingTemplate.convertAndSend(destination, id);
-                break;
             case "bell_001":
+            case "lamp_001":
+            case "motion_001":
                 simpMessagingTemplate.convertAndSend(destination, id);
                 break;
-//            case "motion_001":
-//                System.out.println("motion_001");
-//                break;
-//            case "lamp_001":
-//                System.out.println("lamp_001");
-//                break;
             default: break;
         }
 
