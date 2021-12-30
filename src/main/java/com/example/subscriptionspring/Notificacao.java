@@ -24,37 +24,28 @@ public class Notificacao {
     @PostMapping("/subscribe")
     public void subscription(@RequestBody String json) {
 
-//        AtualizarSgeol atualizaSgeol = new AtualizarSgeol();
-//        atualizaSgeol.atualizarDados(json);
+        AtualizarSgeol atualizaSgeol = new AtualizarSgeol();
+        atualizaSgeol.atualizarDados(json);
 
         jsonObject  = new JSONObject(json);
         JSONArray jsonArray = jsonObject.getJSONArray("data");
 
         jsonObject = jsonArray.getJSONObject(0);
-        String type = jsonObject.getString("type");
 
-        atualizarView(type);
+        String type = jsonObject.getString("type");
+        String id = jsonObject.getString("id");
+
+        atualizarView(type, id);
 
     }
 
-    public void atualizarView(String type){
+    public void atualizarView(String type, String id){
         switch (type){
             case "door_001":
-
-                String state = jsonObject.getJSONObject("state").getString("value");
-                System.out.println(state);
-
-                simpMessagingTemplate.convertAndSend(destination,
-                        "A porta está " + state);
+                simpMessagingTemplate.convertAndSend(destination, id);
                 break;
             case "bell_001":
-                String dataCompleta = jsonObject.getJSONObject("TimeInstant").getString("value");
-                TemporalAccessor ta = DateTimeFormatter.ISO_INSTANT.parse(dataCompleta);
-                Instant i = Instant.from(ta);
-                Date d = Date.from(i);
-                System.out.println(d);
-                simpMessagingTemplate.convertAndSend(destination,
-                        "Última vez que o sino tocou " + d + "\n {\n\t\"@context\": [\"https://forge.etsi.org/gitlab/NGSI-LD/NGSI-LD/raw/master/coreContext/ngsi-ld-core-context.json\",\n\t\t\"https://github.com/JorgePereiraUFRN/SGEOL-LD/blob/master/ngsi-ld/education/student/Student_Context.jsonld\"\n\t],\n\t\"id\": \"urn:ngsi-ld:Bell:001\",\n\t\"type\": \"bell_001\",\n    \t\"location\":{\n      \"type\":\"GeoProperty\",\n      \"value\":{\n         \"coordinates\":[\n            \"-35.36417\",\n            \"-5.88444\"\n         ],\n         \"type\":\"Point\"\n      }\n   },\n   \"Ultimo_toque\":{\n       \"type\": \"property\",\n       \"value\": \""+ d +"\"\n   }\n}");
+                simpMessagingTemplate.convertAndSend(destination, id);
                 break;
 //            case "motion_001":
 //                System.out.println("motion_001");
