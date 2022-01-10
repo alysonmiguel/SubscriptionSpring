@@ -39,7 +39,7 @@ public class AtualizarSgeol {
                         .header("Content-Type", "application/json")
                         .header("application-token", autenticacao.getAppTokens())
                         .header("user-token", autenticacao.getUserTokens())
-                        .body("{\n\t\"@context\": [\"https://forge.etsi.org/gitlab/NGSI-LD/NGSI-LD/raw/master/coreContext/ngsi-ld-core-context.json\",\n\t\t\"https://github.com/JorgePereiraUFRN/SGEOL-LD/blob/master/ngsi-ld/education/student/Student_Context.jsonld\"\n\t],\n\t\"id\": \"urn:ngsi-ld:Door:001\",\n\t\"type\": \"door_001\",\n\t\"location\":{\n      \"type\":\"GeoProperty\",\n      \"value\":{\n         \"coordinates\":[\n            \"-35.36583\",\n            \"-5.88508\"\n         ],\n         \"type\":\"Point\"\n      }\n   },\n   \"status\":{\n       \"type\": \"property\",\n       \"value\": \""+ state +"\"\n   }\n}")
+                        .body("{\n\t\"@context\": [\"https://forge.etsi.org/gitlab/NGSI-LD/NGSI-LD/raw/master/coreContext/ngsi-ld-core-context.json\",\n\t\t\"https://github.com/JorgePereiraUFRN/SGEOL-LD/blob/master/ngsi-ld/education/student/Student_Context.jsonld\"\n\t],\n\t\"id\": \"urn:ngsi-ld:Door:001\",\n\t\"type\": \"door_001\",\n    \"nome\": {\n        \"type\": \"property\",\n        \"value\": \"Porta\"\n    },\n\t\"location\":{\n      \"type\":\"GeoProperty\",\n      \"value\":{\n         \"coordinates\":[\n            \"-35.365003\",\n            \"-5.884073\"\n         ],\n         \"type\":\"Point\"\n      }\n   },\n   \"estado_atual\":{\n       \"type\": \"property\",\n       \"value\": \""+ state +"\"\n   }\n}")
                         .asString();
                 break;
             case "bell_001":
@@ -54,7 +54,7 @@ public class AtualizarSgeol {
                         .header("Content-Type", "application/json")
                         .header("application-token", autenticacao.getAppTokens())
                         .header("user-token", autenticacao.getUserTokens())
-                        .body("{\n\t\"@context\": [\"https://forge.etsi.org/gitlab/NGSI-LD/NGSI-LD/raw/master/coreContext/ngsi-ld-core-context.json\",\n\t\t\"https://github.com/JorgePereiraUFRN/SGEOL-LD/blob/master/ngsi-ld/education/student/Student_Context.jsonld\"\n\t],\n\t\"id\": \"urn:ngsi-ld:Bell:001\",\n\t\"type\": \"bell_001\",\n    \t\"location\":{\n      \"type\":\"GeoProperty\",\n      \"value\":{\n         \"coordinates\":[\n            \"-35.36417\",\n            \"-5.88444\"\n         ],\n         \"type\":\"Point\"\n      }\n   },\n   \"Ultimo_toque\":{\n       \"type\": \"property\",\n       \"value\": \""+ dataAtualFormatada +"\"\n   }\n}")
+                        .body("{\n\t\"@context\": [\"https://forge.etsi.org/gitlab/NGSI-LD/NGSI-LD/raw/master/coreContext/ngsi-ld-core-context.json\",\n\t\t\"https://github.com/JorgePereiraUFRN/SGEOL-LD/blob/master/ngsi-ld/education/student/Student_Context.jsonld\"\n\t],\n\t\"id\": \"urn:ngsi-ld:Bell:001\",\n\t\"type\": \"bell_001\",\n    \"nome\": {\n        \"type\": \"property\",\n        \"value\": \"Sino\"\n    },\n\t\"location\":{\n      \"type\":\"GeoProperty\",\n      \"value\":{\n         \"coordinates\":[\n            \"-35.364751\",\n            \"-5.885302\"\n         ],\n         \"type\":\"Point\"\n      }\n   },\n   \"ultimo_toque\":{\n       \"type\": \"property\",\n       \"value\": \""+ dataAtualFormatada +"\"\n   }\n}")
                         .asString();
                 break;
 

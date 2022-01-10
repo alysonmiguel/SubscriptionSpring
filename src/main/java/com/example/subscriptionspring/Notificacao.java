@@ -43,7 +43,7 @@ public class Notificacao {
         switch (type){
             case "door_001":
             case "bell_001":
-            case "lamp_001":
+//            case "lamp_001":
             case "motion_001":
                 simpMessagingTemplate.convertAndSend(destination, id);
                 break;
